@@ -1,8 +1,10 @@
 package nit.in.jackbot;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,6 +13,8 @@ import android.service.notification.StatusBarNotification;
 import android.util.Log;
 import android.support.v4.content.LocalBroadcastManager;
 import android.widget.Toast;
+
+import java.io.File;
 
 /**
  * Created by nitin on 3/8/16.
@@ -50,6 +54,12 @@ public class NotificationService extends NotificationListenerService {
                 @Override
                 public void run() {
                     Toast.makeText(NotificationService.this, "Headset Plugged!", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent();
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    ComponentName comp = new ComponentName("cn.zte.music", "cn.zte.music.MediaPlaybackActivity");
+                    intent.setComponent(comp);
+                    startActivity(intent);
                 }
             });
         }
