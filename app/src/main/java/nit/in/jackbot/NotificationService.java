@@ -71,11 +71,13 @@ public class NotificationService extends NotificationListenerService implements 
                 public void run() {
                     Toast.makeText(NotificationService.this, "Headset Plugged!", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent();
+                    /*Intent intent = new Intent();
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ComponentName comp = new ComponentName("cn.zte.music", "cn.zte.music.MediaPlaybackActivity");
                     intent.setComponent(comp);
-                    startActivity(intent);
+                    startActivity(intent);*/
+
+                    turnOnMusic();
                 }
             });
         }
@@ -107,6 +109,9 @@ public class NotificationService extends NotificationListenerService implements 
                 @Override
                 public void run() {
                     Toast.makeText(NotificationService.this, "Headset Removed!", Toast.LENGTH_SHORT).show();
+                    mp.reset();
+                    mp.release();
+                    mp.stop();
                 }
             });
 
