@@ -8,11 +8,15 @@ import android.graphics.Color;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.ButtonBarLayout;
 import android.text.Html;
+import android.widget.Button;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    Button bttnLoopAll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
