@@ -1,4 +1,4 @@
-package nit.in.jackbot;
+package nit.in.audiosense;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,4 +1,6 @@
-package nit.in.jackbot;
+package nit.in.audiosense;
+
+import android.os.Environment;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -6,20 +8,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by nitin on 3/8/16.
+ * Created by nitin on 4/8/16.
  */
-
 public class SongsManager {
 
     // SDCard Path
     final String MEDIA_PATH = new String("/sdcard/");
     private ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
 
+
     // Constructor
     public SongsManager(){
 
     }
-
     /**
      * Function to read all mp3 files from sdcard
      * and store the details in ArrayList
