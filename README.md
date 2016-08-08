@@ -3,10 +3,9 @@ this app will listen for audio plug and if the headphone is plugged in, it will 
 
 Intutive yet simplest UI from naive user point of view is provided for more controls from the app.
 
+Supported audio formats : <h3>mp3</h3>
 #Note :
-#1
 Songs should be placed directly in sdcard root location
-
 /sdcard/
 
 
