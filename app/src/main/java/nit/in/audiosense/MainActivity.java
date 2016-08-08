@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.support.v4.content.LocalBroadcastManager;
@@ -176,10 +177,18 @@ public class MainActivity extends AppCompatActivity implements OnCompletionListe
     public void  playSong(int songIndex){
         // Play song
         try {
-            mp.reset();
-            mp.setDataSource(songsList.get(songIndex).get("songPath"));
-            mp.prepare();
-            mp.start();
+            if(mp != null) {
+                mp.reset();
+                mp.setDataSource(songsList.get(songIndex).get("songPath"));
+                mp.prepare();
+                mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    @Override
+                    public void onPrepared(MediaPlayer mediaPlayer) {
+                        mp.start();
+                    }
+                });
+
+            }
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         } catch (IllegalStateException e) {
