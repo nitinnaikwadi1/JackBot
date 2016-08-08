@@ -27,7 +27,7 @@ public class ServiceTest extends Service {
     public void onCreate() {
         super.onCreate();
         mTimer = new Timer();
-        mTimer.schedule(timerTask, 2000, 60 * 1000);
+        mTimer.schedule(timerTask, 2000, 30 * 1000);
 
     }
 
@@ -56,6 +56,7 @@ public class ServiceTest extends Service {
                     Log.i("am.isWiredHeadsetOn()", am.isWiredHeadsetOn()+"");
 
                     if (am.isWiredHeadsetOn()){
+
                         Intent home = new Intent(ServiceTest.this,MainActivity.class);
                         home.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         home.putExtra("AUDIO_FLAG",true);

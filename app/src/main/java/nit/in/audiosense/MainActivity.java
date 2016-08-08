@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.media.AudioManager;
+import android.nfc.Tag;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements OnCompletionListe
 
 
         audioFlag = getIntent().getBooleanExtra("AUDIO_FLAG",false);
+
+        Log.i("AUDIO_FLAG",""+audioFlag);
 
         if(audioFlag){
             turnOnMusic();
@@ -148,19 +151,22 @@ public class MainActivity extends AppCompatActivity implements OnCompletionListe
     };
 
     public void turnOnMusic(){
-        // Mediaplayer
-        mp = new MediaPlayer();
-        songManager = new SongsManager();
 
-        // Listeners
-        mp.setOnCompletionListener(this); // Important
+        if (mp == null) {
+            // Mediaplayer
+            mp = new MediaPlayer();
+            songManager = new SongsManager();
 
-        // Getting all songs list
-        songsList = songManager.getPlayList();
+            // Listeners
+            mp.setOnCompletionListener(this); // Important
 
-        Random rand = new Random();
-        currentSongIndex = rand.nextInt((songsList.size() - 1) - 0 + 1) + 0;
-        playSong(currentSongIndex);
+            // Getting all songs list
+            songsList = songManager.getPlayList();
+
+            Random rand = new Random();
+            currentSongIndex = rand.nextInt((songsList.size() - 1) - 0 + 1) + 0;
+            playSong(currentSongIndex);
+        }
     }
 
     public void turnOffMusic(){
